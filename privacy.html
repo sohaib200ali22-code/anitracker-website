@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - AniTracker</title>
+  <link rel="icon" type="image/png" href="https://cdn.discordapp.com/avatars/1544261218124955708/avatar.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              500: '#8b5cf6',
+              600: '#7c3aed',
+            },
+            dark: {
+              bg: '#090a0f',
+              card: '#12151e',
+              border: '#1f2434',
+              input: '#181c28'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-dark-bg text-slate-200 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 w-full z-50 bg-dark-bg/80 backdrop-blur-md border-b border-dark-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-600 via-pink-500 to-cyan-400 p-0.5 shadow-lg shadow-brand-500/40 overflow-hidden flex-shrink-0">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4j5SAnpHfik3qGSuKCI16YHsPP0_0g3xgfBWRLIs6Xg&s" alt="AniTracker Avatar" class="w-full h-full object-cover rounded-full">
+        </div>
+        <span class="text-xl font-bold tracking-tight text-white">Ani<span class="text-brand-500">Tracker</span></span>
+      </a>
+      <a href="index.html" class="px-4 py-2 rounded-lg bg-dark-card border border-dark-border text-slate-300 hover:text-white transition text-xs font-medium">
+        <i class="fa-solid fa-arrow-left mr-1.5"></i> Back to Home
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="pt-32 pb-20 max-w-4xl mx-auto px-4 sm:px-6">
+    <div class="bg-dark-card border border-dark-border rounded-2xl p-6 sm:p-10 shadow-2xl space-y-8">
+      
+      <div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Privacy Policy</h1>
+        <p class="text-sm text-slate-400 mt-2">Last updated: September 21, 2026</p>
+      </div>
+
+      <p class="text-slate-300 leading-relaxed">
+        Your privacy is incredibly important to us. AniTracker is designed with privacy-first principles to ensure your otaku tracking experience remains secure and transparent.
+      </p>
+
+      <div class="space-y-6 text-slate-300">
+        <section class="space-y-2">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-brand-500">1.</span> Data We Collect
+          </h2>
+          <p class="leading-relaxed text-sm text-slate-400">
+            AniTracker collects minimal data required to deliver core features:
+          </p>
+          <ul class="list-disc list-inside text-sm text-slate-400 space-y-1 pl-2">
+            <li><strong class="text-slate-200">Discord IDs:</strong> User IDs and Guild (Server) IDs to store personal favorites, alert preferences, and setup channels.</li>
+            <li><strong class="text-slate-200">Tracking Preferences:</strong> Anime/Manga titles added to your tracking list for notification routing.</li>
+            <li><strong class="text-slate-200">Server Configurations:</strong> Selected announcement channels, notification roles, and timezone settings.</li>
+          </ul>
+        </section>
+
+        <section class="space-y-2">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-brand-500">2.</span> Data We DO NOT Collect
+          </h2>
+          <p class="leading-relaxed text-sm text-slate-400">
+            We respect your private conversations. AniTracker <strong class="text-slate-200">does not</strong> read, store, or log personal chat messages, voice chat logs, personal IP addresses, or sensitive account info.
+          </p>
+        </section>
+
+        <section class="space-y-2">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-brand-500">3.</span> How We Use Your Data
+          </h2>
+          <p class="leading-relaxed text-sm text-slate-400">
+            Stored IDs and preferences are used solely for:
+          </p>
+          <ul class="list-disc list-inside text-sm text-slate-400 space-y-1 pl-2">
+            <li>Sending DM notifications when new episodes/chapters release for your tracked titles.</li>
+            <li>Posting episode announcements to configured channels in your server.</li>
+            <li>Displaying your personalized lists when running commands like <code class="text-brand-400 bg-dark-input px-1.5 py-0.5 rounded">/myfavorites</code>.</li>
+          </ul>
+        </section>
+
+        <section class="space-y-2">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-brand-500">4.</span> Data Retention & Deletion
+          </h2>
+          <p class="leading-relaxed text-sm text-slate-400">
+            Your saved data remains in our secure database for as long as you use the bot. If you wish to remove your stored data completely, you can delete your favorites list via commands or request a full data wipe by contacting support on Discord.
+          </p>
+        </section>
+
+        <section class="space-y-2">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-brand-500">5.</span> Privacy Updates
+          </h2>
+          <p class="leading-relaxed text-sm text-slate-400">
+            We may update this policy periodically to reflect new features or regulations. Continued usage of AniTracker constitutes acceptance of these updates.
+          </p>
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="py-8 bg-dark-bg border-t border-dark-border text-center text-slate-400 text-sm">
+    Designed with <span class="text-brand-500 font-bold">sai</span>
+  </footer>
+</body>
+</html>
