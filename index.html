@@ -54,9 +54,14 @@
  <!-- Ambient Background Glows -->
 <div class="fixed top-20 left-1/4 w-96 h-96 bg-brand-600/15 rounded-full blur-[120px] pointer-events-none -z-10"></div>
 <div class="fixed bottom-20 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none -z-10"></div>
-  <!-- Navigation -->
-  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-transparent">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+<!-- Top Announcement Bar -->
+<div class="bg-gradient-to-r from-brand-600 to-pink-600 text-white text-xs font-semibold py-2 px-4 text-center flex items-center justify-center space-x-2 relative z-50">
+  <span>🎉 AniTracker is fully updated with the latest AniList API integration!</span>
+  <a href="https://top.gg/bot/1544261218124955708" target="_blank" class="underline hover:text-slate-200 ml-1">Vote on Top.gg →</a>
+</div>
+
+<!-- Navigation -->
+<nav id="navbar" class="fixed top-8 left-0 w-full z-40 transition-all duration-300 border-b border-transparent">    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <div class="flex items-center space-x-3">
         <!-- Bot Avatar Logo -->
         <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-600 via-pink-500 to-cyan-400 p-0.5 shadow-lg shadow-brand-500/40 overflow-hidden flex-shrink-0">
@@ -108,37 +113,85 @@
       </div>
 
       <!-- Chat Body -->
-      <div class="p-6 space-y-4">
-        <div class="flex items-start space-x-4">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4j5SAnpHfik3qGSuKCI16YHsPP0_0g3xgfBWRLIs6Xg&s" class="w-10 h-10 rounded-full">
-          <div class="flex-1">
-            <div class="flex items-center space-x-2">
-              <span class="font-bold text-white text-sm">AniTracker</span>
-              <span class="bg-brand-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">BOT</span>
-              <span class="text-xs text-slate-400">Today at 12:00 PM</span>
-            </div>
+      <div class="p-6 space-y-3">
+        <!-- Command Trigger Header -->
+        <div class="flex items-center space-x-2 text-xs text-slate-400 pl-11">
+          <i class="fa-solid fa-reply rotate-180 text-slate-500"></i>
+          <span class="font-semibold text-slate-200">sai</span> <span class="text-slate-400">used</span> <span class="bg-[#2b2d31] text-brand-400 px-1.5 py-0.5 rounded font-mono text-[11px] border border-slate-700/40">:: anime</span>
+        </div>
 
-            <!-- Discord Embed Card -->
-            <div class="mt-2 bg-[#2b2d31] border-l-4 border-brand-500 rounded-r-lg p-4 max-w-lg space-y-3">
-              <div class="flex justify-between items-start">
-                <div>
-                  <h4 class="text-white font-bold text-base hover:underline cursor-pointer">Solo Leveling Season 2</h4>
-                  <p class="text-xs text-slate-400 mt-0.5">Arise from the Shadows</p>
-                </div>
-                <span class="bg-emerald-500/20 text-emerald-400 text-xs px-2 py-0.5 rounded font-semibold">AIRING</span>
-              </div>
-              <div class="grid grid-cols-2 gap-2 text-xs">
-                <div><span class="text-slate-400">Next Ep:</span> <span class="text-slate-200 font-semibold">Ep 8 in 2 days</span></div>
-                <div><span class="text-slate-400">Score:</span> <span class="text-yellow-400 font-semibold">★ 8.7/10</span></div>
-              </div>
+        <!-- Bot Message Header -->
+        <div class="flex items-start space-x-3">
+          <div class="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 border border-brand-500/40">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4j5SAnpHfik3qGSuKCI16YHsPP0_0g3xgfBWRLIs6Xg&s" alt="AniTracker Bot Avatar" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="text-white font-semibold text-sm">｡• 🌙 •｡ anitracker(｡• 🌙 •｡)</span>
+              <span class="bg-[#5865f2] text-white text-[9px] font-bold px-1.5 py-0.2 rounded">APP</span>
+              <span class="text-[11px] text-slate-400">8:17 AM</span>
             </div>
           </div>
         </div>
+
+        <!-- Real Discord Embed (Oshi No Ko) -->
+        <div class="ml-12 border-l-4 border-orange-500 bg-[#1e1f22] rounded-r-lg p-4 text-slate-200 max-w-xl">
+          <div class="flex justify-between items-start gap-4">
+            <div class="space-y-3 flex-1">
+              <h3 class="font-bold text-sky-400 text-base tracking-wide uppercase cursor-pointer hover:underline">OSHI NO KO</h3>
+              <p class="text-xs text-slate-300">
+                Click <strong class="text-white">More Info</strong> for the full synopsis and details.
+              </p>
+              
+              <div class="grid grid-cols-3 gap-2 text-xs pt-2 border-t border-slate-700/50">
+                <div>
+                  <div class="text-slate-400 font-semibold mb-0.5">Episodes</div>
+                  <div class="text-white font-medium">11</div>
+                </div>
+                <div>
+                  <div class="text-slate-400 font-semibold mb-0.5">Status</div>
+                  <div class="text-white font-medium">FINISHED</div>
+                </div>
+                <div>
+                  <div class="text-slate-400 font-semibold mb-0.5">Score</div>
+                  <div class="text-white font-medium">84 / 100</div>
+                </div>
+              </div>
+
+              <div class="text-[11px] text-slate-400 pt-2">
+                AniTracker • Anime Search
+              </div>
+            </div>
+
+            <!-- Poster Image -->
+            <div class="w-20 h-28 rounded-md overflow-hidden flex-shrink-0 shadow-md bg-dark-card border border-slate-700/50">
+              <img src="https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNmLWJiM2MtZDViNmE4MzE2YWJhXkEyXkFqcGdeQXVyMTEzMTI1Mjk3._V1_.jpg" alt="Oshi No Ko Poster" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons Mockup -->
+        <div class="ml-12 flex flex-wrap gap-2 pt-1">
+          <button class="bg-[#2b2d31] hover:bg-[#35373c] text-slate-200 text-xs font-medium px-3 py-1.5 rounded transition flex items-center space-x-1.5 border border-slate-700/50">
+            <i class="fa-solid fa-book text-slate-400"></i>
+            <span>More Info</span>
+          </button>
+          <button class="bg-[#2b2d31] hover:bg-[#35373c] text-slate-200 text-xs font-medium px-3 py-1.5 rounded transition flex items-center space-x-1.5 border border-slate-700/50">
+            <i class="fa-solid fa-link text-slate-400"></i>
+            <span>Share</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-500"></i>
+          </button>
+          <button class="bg-[#2b2d31] hover:bg-[#35373c] text-slate-200 text-xs font-medium px-3 py-1.5 rounded transition flex items-center space-x-1.5 border border-slate-700/50">
+            <i class="fa-solid fa-play text-sky-400"></i>
+            <span>Trailer</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-500"></i>
+          </button>
+        </div>
+
       </div>
     </div>
   </div>
 </section>
-
   <!-- Features Section -->
   <section id="features" class="py-20 bg-dark-card/50 border-y border-dark-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
