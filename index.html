@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AniTracker - Ultimate Anime & Manga Discord Bot</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+              700: '#6d28d9',
+              900: '#4c1d95',
+            },
+            dark: {
+              bg: '#090a0f',
+              card: '#12151e',
+              border: '#1f2434',
+              input: '#181c28'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .animate-spin-slow {
+      animation: spin 12s linear infinite;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body class="bg-dark-bg text-slate-200 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 bg-brand-600 text-white px-5 py-3 rounded-xl shadow-2xl transition-all duration-300 opacity-0 pointer-events-none transform translate-y-4 z-50 flex items-center space-x-2 font-medium text-sm">
+    <i class="fa-solid fa-check-circle text-emerald-400 text-lg"></i>
+    <span id="toast-message">Command copied to clipboard!</span>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 w-full z-50 bg-dark-bg/80 backdrop-blur-md border-b border-dark-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 via-pink-500 to-cyan-400 p-0.5 shadow-lg shadow-brand-500/30">
+          <div class="w-full h-full bg-dark-bg rounded-[10px] flex items-center justify-center">
+            <i class="fa-solid fa-compact-disc text-brand-500 text-xl animate-spin-slow"></i>
+          </div>
+        </div>
+        <span class="text-xl font-bold tracking-tight text-white">Ani<span class="text-brand-500">Tracker</span></span>
+      </div>
+
+      <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+        <a href="#features" class="hover:text-white transition">Features</a>
+        <a href="#preview" class="hover:text-white transition">Preview</a>
+        <a href="#commands" class="hover:text-white transition">Commands</a>
+        <a href="#faq" class="hover:text-white transition">FAQ</a>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <a href="https://discord.gg/H4Af2y4RD8" target="_blank" class="hidden sm:inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-dark-card border border-dark-border text-slate-300 hover:text-white hover:border-slate-600 transition">
+          <i class="fa-brands fa-discord text-brand-500"></i>
+          <span>Support Server</span>
+        </a>
+        <a href="https://discord.com/oauth2/authorize?client_id=1544261218124955708&permissions=268553216&integration_type=0&scope=bot+applications.commands" target="_blank" class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white font-semibold transition shadow-lg shadow-brand-600/30 hover:shadow-brand-500/50 hover:-translate-y-0.5">
+          <i class="fa-solid fa-plus"></i>
+          <span>Add to Discord</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-36 pb-20 relative overflow-hidden">
+    <div class="absolute -top-40 -left-40 w-96 h-96 bg-brand-600/20 rounded-full blur-[128px] pointer-events-none"></div>
+    <div class="absolute top-1/2 -right-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-[128px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-sm font-semibold mb-8 backdrop-blur-sm">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>track and find more than 500,000 animes and manga</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight max-w-4xl mx-auto">
+        Your Ultimate Companion for <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 via-pink-500 to-cyan-400">Anime & Manga</span> Tracking
+      </h1>
+
+      <p class="mt-6 text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        Search titles, set instant DM release notifications, track seasonal anime schedules, and organize your favorite manga effortlessly right inside Discord.
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="https://discord.com/oauth2/authorize?client_id=1544261218124955708&permissions=268553216&integration_type=0&scope=bot+applications.commands" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-lg shadow-xl shadow-brand-600/30 transition transform hover:-translate-y-1 flex items-center justify-center space-x-3">
+          <i class="fa-brands fa-discord text-xl"></i>
+          <span>Invite AniTracker</span>
+        </a>
+        <a href="https://discord.gg/H4Af2y4RD8" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-dark-card border border-dark-border hover:border-slate-600 text-slate-200 font-semibold text-lg transition flex items-center justify-center space-x-3">
+          <i class="fa-solid fa-comments text-brand-500"></i>
+          <span>Join Support</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Embed Preview Section -->
+  <section id="preview" class="py-16 bg-dark-bg relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white">Discord Integration Preview</h2>
+        <p class="mt-2 text-slate-400 text-sm">Experience rich embeds and clean interaction directly in your channels.</p>
+      </div>
+
+      <!-- Discord Embed Container -->
+      <div class="bg-[#2b2d31] rounded-xl p-4 sm:p-6 shadow-2xl border border-slate-800 font-sans text-left">
+        <!-- Message Header -->
+        <div class="flex items-center space-x-3 mb-4">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-600 to-pink-500 flex items-center justify-center text-white font-bold text-lg">
+            <i class="fa-solid fa-compact-disc"></i>
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="text-white font-semibold text-sm sm:text-base">AniTracker</span>
+              <span class="bg-[#5865f2] text-white text-[10px] font-bold px-1.5 py-0.5 rounded">BOT</span>
+              <span class="text-xs text-slate-400">Today at 4:20 PM</span>
+            </div>
+            <p class="text-xs text-slate-400">Slash command result for <span class="text-brand-400">/anime Jujutsu Kaisen</span></p>
+          </div>
+        </div>
+
+        <!-- Discord Embed Body -->
+        <div class="border-l-4 border-brand-500 bg-[#2f3136] rounded-r-lg p-4 sm:p-5 text-slate-200 flex flex-col sm:flex-row gap-4">
+          <div class="flex-1 space-y-3">
+            <div class="flex items-center justify-between">
+              <h3 class="font-bold text-white text-lg hover:underline cursor-pointer">Jujutsu Kaisen 2nd Season</h3>
+              <span class="bg-emerald-500/20 text-emerald-400 text-xs px-2 py-0.5 rounded font-semibold">AIRING</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed line-clamp-3">
+              The past comes back to haunt Satoru Gojo and Suguru Geto as they face a crucial mission protecting the Star Plasma Vessel.
+            </p>
+            <div class="grid grid-cols-2 gap-2 text-xs pt-1">
+              <div><span class="text-slate-400">Score:</span> <span class="text-amber-400 font-semibold">★ 8.8 / 10</span></div>
+              <div><span class="text-slate-400">Episodes:</span> <span class="text-white">23 / 23</span></div>
+              <div><span class="text-slate-400">Studio:</span> <span class="text-white">MAPPA</span></div>
+              <div><span class="text-slate-400">Format:</span> <span class="text-white">TV Series</span></div>
+            </div>
+          </div>
+          <div class="w-full sm:w-28 h-36 rounded-lg overflow-hidden bg-dark-card flex-shrink-0 relative">
+            <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=300&auto=format&fit=crop&q=80" alt="Anime Poster" class="w-full h-full object-cover">
+          </div>
+        </div>
+
+        <!-- Action Buttons Mockup -->
+        <div class="flex flex-wrap gap-2 mt-3">
+          <button class="bg-[#4e5058] hover:bg-[#6d6f78] text-white text-xs font-medium px-3 py-1.5 rounded transition flex items-center space-x-1.5">
+            <i class="fa-solid fa-[#fa233b] fa-heart text-pink-400"></i>
+            <span>Add to Favorites</span>
+          </button>
+          <button class="bg-[#4e5058] hover:bg-[#6d6f78] text-white text-xs font-medium px-3 py-1.5 rounded transition flex items-center space-x-1.5">
+            <i class="fa-solid fa-bell text-amber-400"></i>
+            <span>Track Airing</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-20 bg-dark-card/50 border-y border-dark-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="text-3xl font-bold text-white">Packed with Everything You Need</h2>
+        <p class="mt-4 text-slate-400">Designed specifically for anime lovers and server managers to keep everyone up to date.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-8 rounded-2xl bg-dark-card border border-dark-border hover:border-brand-500/50 transition group">
+          <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center text-xl font-bold mb-6 group-hover:scale-110 transition">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Rich Anime & Manga Search</h3>
+          <p class="text-slate-400 leading-relaxed">Instantly look up detailed statistics, characters, genres, and release schedules powered by leading databases like AniList & Kitsu.</p>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-dark-card border border-dark-border hover:border-pink-500/50 transition group">
+          <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-pink-500 flex items-center justify-center text-xl font-bold mb-6 group-hover:scale-110 transition">
+            <i class="fa-solid fa-bell"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Instant DM & Server Alerts</h3>
+          <p class="text-slate-400 leading-relaxed">Save titles to your personal list for private DM notifications, or configure full channel notifications for your server.</p>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-dark-card border border-dark-border hover:border-cyan-500/50 transition group">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center text-xl font-bold mb-6 group-hover:scale-110 transition">
+            <i class="fa-solid fa-sliders"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Custom Server Tools</h3>
+          <p class="text-slate-400 leading-relaxed">Complete server management tools including customizable notification channels, age-verification status check, and timezone settings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Commands Center Section -->
+  <section id="commands" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-3xl font-bold text-white">Bot Command Directory</h2>
+        <p class="mt-4 text-slate-400">Explore all commands available in AniTracker. Click any command to copy it instantly.</p>
+      </div>
+
+      <!-- Command Filter & Search -->
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
+        <div class="flex flex-wrap gap-2 w-full md:w-auto" id="filter-tabs">
+          <button data-category="all" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-brand-600 text-white transition">All Commands</button>
+          <button data-category="general" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-dark-card text-slate-400 border border-dark-border hover:text-white transition">General & Search</button>
+          <button data-category="personal" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-dark-card text-slate-400 border border-dark-border hover:text-white transition">Personal & Alerts</button>
+          <button data-category="server" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-dark-card text-slate-400 border border-dark-border hover:text-white transition">Server Tools</button>
+          <button data-category="start" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-dark-card text-slate-400 border border-dark-border hover:text-white transition">Start Here</button>
+        </div>
+
+        <div class="relative w-full md:w-72">
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 text-sm"></i>
+          <input type="text" id="command-search" placeholder="Search commands..." class="w-full bg-dark-card border border-dark-border text-white text-sm rounded-xl pl-10 pr-4 py-2.5 focus:outline-none focus:border-brand-500 transition">
+        </div>
+      </div>
+
+      <!-- Commands Table Container -->
+      <div class="bg-dark-card border border-dark-border rounded-2xl overflow-hidden shadow-xl">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm text-slate-300">
+            <thead class="bg-dark-input/50 text-slate-400 font-semibold border-b border-dark-border uppercase text-xs">
+              <tr>
+                <th class="py-4 px-6">Command</th>
+                <th class="py-4 px-6">Category</th>
+                <th class="py-4 px-6">Description</th>
+                <th class="py-4 px-6 text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-dark-border/60" id="command-list">
+              <!-- General -->
+              <tr class="command-item hover:bg-dark-input/30 transition" data-category="general">
+                <td class="py-4 px-6 font-mono text-brand-400 font-semibold">/anime</td>
+                <td class="py-4 px-6"><span class="bg-brand-500/10 text-brand-400 text-xs px-2.5 py-1 rounded-md border border-brand-500/20">General</span></td>
+                <td class="py-4 px-6">Search anime details, ratings, and episodes</td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/anime')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+              </tr>
+              <tr class="command-item hover:bg-dark-input/30 transition" data-category="general">
+                <td class="py-4 px-6 font-mono text-brand-400 font-semibold">/manga</td>
+                <td class="py-4 px-6"><span class="bg-brand-500/10 text-brand-400 text-xs px-2.5 py-1 rounded-md border border-brand-500/20">General</span></td>
+                <td class="py-4 px-6">Search manga titles, chapters, and authors</td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/manga')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+              </tr>
+              <tr class="command-item hover:bg-dark-input/30 transition" data-category="general">
+                <td class="py-4 px-6 font-mono text-brand-400 font-semibold">/character</td>
+                <td class="py-4 px-6"><span class="bg-brand-500/10 text-brand-400 text-xs px-2.5 py-1 rounded-md border border-brand-500/20">General</span></td>
+                <td class="py-4 px-6">Search anime & manga character profiles</td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/character')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+              </tr>
+              <tr class="command-item hover:bg-dark-input/30 transition" data-category="general">
+                <td class="py-4 px-6 font-mono text-brand-400 font-semibold">/genre</td>
+                <td class="py-4 px-6"><span class="bg-brand-500/10 text-brand-400 text-xs px-2.5 py-1 rounded-md border border-brand-500/20">General</span></td>
+                <td class="py-4 px-6">Get recommendations filtered by category/genre</td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/genre')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+              </tr>
+              <tr class="command-item hover:bg-dark-input/30 transition" data-category="general">
+                <td class="py-4 px-6 font-mono text-brand-400 font-semibold">/schedule</td>
+                <td class="py-4 px-6"><span class="bg-brand-500/10 text-brand-400 text-xs px-2.5 py-1 rounded-md border border-brand-500/20">General</span></td>
+                <td class="py-4 px-6">View daily airing anime release schedule</td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/schedule')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+              </tr>
+
+              <!-- Personal -->
+              <tr class="command-item hover:bg-dark-input/30 transition" data-category="personal">
+                <td class="py-4 px-6 font-mono text-pink-400 font-semibold">/favorite</td>
+                <td class="py-4 px-6"><span class="bg-pink-500/10 text-pink-400 text-xs px-2.5 py-1 rounded-md border border-pink-500/20">Personal</span></td>
+                <td class="py-4 px-6">Save anime or manga for direct DM alerts</td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/favorite')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+              </tr>
+              <tr class="command-item hover:bg-dark-input/30 transition" data-category="personal">
+                <td class="py-4 px-6 font-mono text-pink-400 font-semibold">/unfavorite</td>
+                <td class="py-4 px-6"><span class="bg-pink-500/10 text-pink-400 text-xs px-2.5 py-1 rounded-md border border-pink-500/20">Personal</span></td>
+                <td class="py-4 px-6">Remove a title from your favorite list</td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/unfavorite')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+              </tr>
+              <tr class="command-item hover:bg-dark-input/30 transition" data-category="personal">
+                <td class="py-4 px-6 font-mono text-pink-400 font-semibold">/myfavorites</td>
+                <td class="py-4 px-6"><span class="bg-pink-500/10 text-pink-400 text-xs px-2.5 py-1 rounded-md border border-pink-500/20">Personal</span></td>
+                <td class="py-4 px-6">View and manage your saved favorites list</td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/myfavorites')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+              </tr>
+              <tr class="command-item hover:bg-dark-input/30 transition" data-category="personal">
+                <td class="py-4 px-6 font-mono text-pink-400 font-semibold">/report</td>
+                <td class="py-4 px-6"><span class="bg-pink-500/10 text-pink-400 text-xs px-2.5 py-1 rounded-md border border-pink-500/20">Personal</span></td>
+                <td class="py-4 px-6">Privately report an issue or bug to developers</td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/report')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+              </tr>
+
+              <!-- Server Tools -->
+              <tr class="command-item hover:bg-dark-input/30 transition" data-category="server">
+                <td class="py-4 px-6 font-mono text-cyan-400 font-semibold">/track</td>
+                <td class="py-4 px-6"><span class="bg-cyan-500/10 text-cyan-400 text-xs px-2.5 py-1 rounded-md border border-cyan-500/20">Server Tools</span></td>
+                <td class="py-4 px-6">Track anime or manga alerts for the server</td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/track')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+              </tr>
+              <tr class="command-item hover:bg-dark-input/30 transition" data-category="server">
+                <td class="py-4 px-6 font-mono text-cyan-400 font-semibold">/setup</td>
+                <td class="py-4 px-6"><span class="bg-cyan-500/10 text-cyan-400 text-xs px-2.5 py-1 rounded-md border border-cyan-500/20">Server Tools</span></td>
+                <td class="py-4 px-6">Setup the designated alert channel for announcements</td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/setup')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+              </tr>
+
+              <!-- Start Here -->
+              <tr class="command-item hover:bg-dark-input/30 transition" data-category="start">
+                <td class="py-4 px-6 font-mono text-emerald-400 font-semibold">/start</td>
+                <td class="py-4 px-6"><span class="bg-emerald-500/10 text-emerald-400 text-xs px-2.5 py-1 rounded-md border border-emerald-500/20">Start Here</span></td>
+                <td class="py-4 px-6">Interactive welcome guide and onboarding</td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/start')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+              </tr>
+              <tr class="command-item hover:bg-dark-input/30 transition" data-category="start">
+                <td class="py-4 px-6 font-mono text-emerald-400 font-semibold">/help</td>
+                <td class="py-4 px-6"><span class="bg-emerald-500/10 text-emerald-400 text-xs px-2.5 py-1 rounded-md border border-emerald-500/20">Start Here</span></td>
+                <td class="py-4 px-6">Display full interactive command list and support links</td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/help')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-20 bg-dark-card/30 border-t border-dark-border">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-white">Frequently Asked Questions</h2>
+        <p class="mt-3 text-slate-400">Everything you need to know about AniTracker setup and permissions.</p>
+      </div>
+
+      <div class="space-y-4">
+        <!-- FAQ 1 -->
+        <div class="faq-card bg-dark-card border border-dark-border rounded-xl overflow-hidden transition">
+          <button onclick="toggleFaq(this)" class="w-full px-6 py-5 text-left flex items-center justify-between font-semibold text-white focus:outline-none">
+            <span>What permissions does AniTracker need?</span>
+            <i class="fa-solid fa-chevron-down text-slate-500 transition-transform duration-200"></i>
+          </button>
+          <div class="faq-answer hidden px-6 pb-5 text-slate-400 text-sm leading-relaxed border-t border-dark-border/40 pt-4">
+            AniTracker requires standard embed permissions and specifically the <strong class="text-brand-400">Manage Roles (إدارة الأدوار)</strong> permission. This is necessary for managing alert roles, automated notifications, and setting up server-wide tracking channels seamlessly.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-card bg-dark-card border border-dark-border rounded-xl overflow-hidden transition">
+          <button onclick="toggleFaq(this)" class="w-full px-6 py-5 text-left flex items-center justify-between font-semibold text-white focus:outline-none">
+            <span>Is AniTracker completely free to use?</span>
+            <i class="fa-solid fa-chevron-down text-slate-500 transition-transform duration-200"></i>
+          </button>
+          <div class="faq-answer hidden px-6 pb-5 text-slate-400 text-sm leading-relaxed border-t border-dark-border/40 pt-4">
+            Yes! All searching, DM alerts, episode tracking, and server notifications are 100% free with no hidden paywalls.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-card bg-dark-card border border-dark-border rounded-xl overflow-hidden transition">
+          <button onclick="toggleFaq(this)" class="w-full px-6 py-5 text-left flex items-center justify-between font-semibold text-white focus:outline-none">
+            <span>How do I set up server-wide episode alerts?</span>
+            <i class="fa-solid fa-chevron-down text-slate-500 transition-transform duration-200"></i>
+          </button>
+          <div class="faq-answer hidden px-6 pb-5 text-slate-400 text-sm leading-relaxed border-t border-dark-border/40 pt-4">
+            Simply run <code class="text-brand-400 bg-dark-input px-2 py-0.5 rounded">/setup</code> in the channel where you want announcements to appear, then use <code class="text-brand-400 bg-dark-input px-2 py-0.5 rounded">/track [title]</code> to start receiving new episode updates automatically!
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 bg-dark-bg border-t border-dark-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-500 text-sm">
+      Designed with <a href="https://discord.com/users/1326815636395003966" target="_blank" class="text-brand-500 hover:underline font-semibold">sai</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Copy Command Function
+    function copyCmd(cmd) {
+      navigator.clipboard.writeText(cmd);
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-message').innerText = `Copied "${cmd}" to clipboard!`;
+      toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+        toast.classList.remove('opacity-100', 'translate-y-0');
+      }, 2500);
+    }
+
+    // Toggle FAQ Accordion
+    function toggleFaq(button) {
+      const answer = button.nextElementSibling;
+      const icon = button.querySelector('i');
+      answer.classList.toggle('hidden');
+      icon.classList.toggle('rotate-180');
+    }
+
+    // Command Filtering & Search Logic
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const commandRows = document.querySelectorAll('.command-item');
+    const searchInput = document.getElementById('command-search');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-brand-600', 'text-white');
+          b.classList.add('bg-dark-card', 'text-slate-400', 'border', 'border-dark-border');
+        });
+        btn.classList.remove('bg-dark-card', 'text-slate-400', 'border', 'border-dark-border');
+        btn.classList.add('bg-brand-600', 'text-white');
+
+        const cat = btn.getAttribute('data-category');
+        filterCommands();
+      });
+    });
+
+    searchInput.addEventListener('input', filterCommands);
+
+    function filterCommands() {
+      const activeCategory = document.querySelector('.filter-btn.bg-brand-600').getAttribute('data-category');
+      const query = searchInput.value.toLowerCase().trim();
+
+      commandRows.forEach(row => {
+        const categoryMatch = activeCategory === 'all' || row.getAttribute('data-category') === activeCategory;
+        const textMatch = row.innerText.toLowerCase().includes(query);
+
+        if (categoryMatch && textMatch) {
+          row.classList.remove('hidden');
+        } else {
+          row.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
