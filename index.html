@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AniTracker - Ultimate Anime & Manga Discord Bot</title>
-  <link rel="icon" type="image/png" href="https://cdn.discordapp.com/avatars/1544261218124955708/avatar.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -48,9 +47,10 @@
   <nav class="fixed top-0 left-0 w-full z-50 bg-dark-bg/80 backdrop-blur-md border-b border-dark-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <div class="flex items-center space-x-3">
-        <!-- Bot Avatar Logo -->
         <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-600 via-pink-500 to-cyan-400 p-0.5 shadow-lg shadow-brand-500/40 overflow-hidden flex-shrink-0">
-          <img src="https://cdn.discordapp.com/avatars/1544261218124955708/avatar.png" onerror="this.src='https://images.unsplash.com/photo-1578632767115-351597cf2477?w=100&auto=format&fit=crop&q=80'" alt="AniTracker Avatar" class="w-full h-full object-cover rounded-full">
+          <div class="w-full h-full bg-dark-bg rounded-full flex items-center justify-center text-white font-bold text-sm">
+            Ani
+          </div>
         </div>
         <span class="text-xl font-bold tracking-tight text-white">Ani<span class="text-brand-500">Tracker</span></span>
       </div>
@@ -116,55 +116,82 @@
       </div>
 
       <!-- Discord Embed Container -->
-      <div class="bg-[#2b2d31] rounded-xl p-4 sm:p-6 shadow-2xl border border-slate-800 font-sans text-left">
+      <div class="bg-[#111214] rounded-xl p-4 sm:p-6 shadow-2xl border border-slate-800/80 font-sans text-left max-w-2xl mx-auto">
+        
+        <!-- Command Trigger Header -->
+        <div class="flex items-center space-x-2 text-xs text-slate-400 mb-2 pl-8">
+          <i class="fa-solid fa-reply rotate-180 text-slate-500"></i>
+          <span class="font-semibold text-slate-300">sai</span> used <span class="bg-[#2b2d31] text-brand-400 px-1.5 py-0.5 rounded font-mono">:: anime</span>
+        </div>
+
         <!-- Message Header -->
-        <div class="flex items-center space-x-3 mb-4">
-          <div class="w-10 h-10 rounded-full overflow-hidden border border-brand-500/50 flex-shrink-0">
-            <img src="https://cdn.discordapp.com/avatars/1544261218124955708/avatar.png" onerror="this.src='https://images.unsplash.com/photo-1578632767115-351597cf2477?w=100&auto=format&fit=crop&q=80'" alt="AniTracker Bot" class="w-full h-full object-cover">
+        <div class="flex items-start space-x-3 mb-3">
+          <div class="w-9 h-9 rounded-full bg-purple-900 flex items-center justify-center text-white font-bold text-xs overflow-hidden flex-shrink-0">
+            <i class="fa-solid fa-moon text-brand-400"></i>
           </div>
           <div>
             <div class="flex items-center space-x-2">
-              <span class="text-white font-semibold text-sm sm:text-base">anitracker(｡• 🌙 •｡)</span>
-              <span class="bg-[#5865f2] text-white text-[10px] font-bold px-1.5 py-0.5 rounded">APP</span>
-              <span class="text-xs text-slate-400">Today at 4:20 PM</span>
+              <span class="text-white font-semibold text-sm">｡• 🌙 •｡ anitracker(｡• 🌙 •｡)</span>
+              <span class="bg-[#5865f2] text-white text-[9px] font-bold px-1.5 py-0.2 rounded">APP</span>
+              <span class="text-[11px] text-slate-400">8:17 AM</span>
             </div>
-            <p class="text-xs text-slate-400">Slash command result for <span class="text-brand-400">/anime Jujutsu Kaisen</span></p>
           </div>
         </div>
 
-        <!-- Discord Embed Body -->
-        <div class="border-l-4 border-brand-500 bg-[#2f3136] rounded-r-lg p-4 sm:p-5 text-slate-200 flex flex-col sm:flex-row gap-4">
-          <div class="flex-1 space-y-3">
-            <div class="flex items-center justify-between">
-              <h3 class="font-bold text-white text-lg hover:underline cursor-pointer">Jujutsu Kaisen 2nd Season</h3>
-              <span class="bg-emerald-500/20 text-emerald-400 text-xs px-2 py-0.5 rounded font-semibold">AIRING</span>
+        <!-- Discord Embed Body (Oshi No Ko) -->
+        <div class="ml-12 border-l-4 border-orange-500 bg-[#1e1f22] rounded-r-lg p-4 text-slate-200">
+          <div class="flex justify-between items-start gap-4">
+            <div class="space-y-3 flex-1">
+              <h3 class="font-bold text-sky-400 text-base tracking-wide uppercase cursor-pointer hover:underline">OSHI NO KO</h3>
+              <p class="text-xs text-slate-300">
+                Click <strong class="text-white">More Info</strong> for the full synopsis and details.
+              </p>
+              
+              <div class="grid grid-cols-3 gap-2 text-xs pt-2 border-t border-slate-700/50">
+                <div>
+                  <div class="text-slate-400 font-semibold mb-0.5">Episodes</div>
+                  <div class="text-white font-medium">11</div>
+                </div>
+                <div>
+                  <div class="text-slate-400 font-semibold mb-0.5">Status</div>
+                  <div class="text-white font-medium">FINISHED</div>
+                </div>
+                <div>
+                  <div class="text-slate-400 font-semibold mb-0.5">Score</div>
+                  <div class="text-white font-medium">84 / 100</div>
+                </div>
+              </div>
+
+              <div class="text-[11px] text-slate-400 pt-2">
+                AniTracker • Anime Search
+              </div>
             </div>
-            <p class="text-xs text-slate-300 leading-relaxed line-clamp-3">
-              The past comes back to haunt Satoru Gojo and Suguru Geto as they face a crucial mission protecting the Star Plasma Vessel.
-            </p>
-            <div class="grid grid-cols-2 gap-2 text-xs pt-1">
-              <div><span class="text-slate-400">Score:</span> <span class="text-amber-400 font-semibold">★ 8.8 / 10</span></div>
-              <div><span class="text-slate-400">Episodes:</span> <span class="text-white">23 / 23</span></div>
-              <div><span class="text-slate-400">Studio:</span> <span class="text-white">MAPPA</span></div>
-              <div><span class="text-slate-400">Format:</span> <span class="text-white">TV Series</span></div>
+
+            <!-- Poster Image -->
+            <div class="w-20 h-28 rounded-md overflow-hidden flex-shrink-0 shadow-md">
+              <img src="https://m.media-amazon.com/images/M/MV5BNDI0Y2RmNWQtMThlMC00M2I2LWE2OTAtY2NmMTA2NTkwOTU2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Oshi No Ko Poster" class="w-full h-full object-cover">
             </div>
-          </div>
-          <div class="w-full sm:w-28 h-36 rounded-lg overflow-hidden bg-dark-card flex-shrink-0 relative">
-            <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=300&auto=format&fit=crop&q=80" alt="Anime Poster" class="w-full h-full object-cover">
           </div>
         </div>
 
         <!-- Action Buttons Mockup -->
-        <div class="flex flex-wrap gap-2 mt-3">
-          <button class="bg-[#4e5058] hover:bg-[#6d6f78] text-white text-xs font-medium px-3 py-1.5 rounded transition flex items-center space-x-1.5">
-            <i class="fa-solid fa-heart text-pink-400"></i>
-            <span>Add to Favorites</span>
+        <div class="ml-12 flex flex-wrap gap-2 mt-3">
+          <button class="bg-[#2b2d31] hover:bg-[#35373c] text-slate-200 text-xs font-medium px-3 py-1.5 rounded transition flex items-center space-x-1.5 border border-slate-700/50">
+            <i class="fa-solid fa-book text-slate-400"></i>
+            <span>More Info</span>
           </button>
-          <button class="bg-[#4e5058] hover:bg-[#6d6f78] text-white text-xs font-medium px-3 py-1.5 rounded transition flex items-center space-x-1.5">
-            <i class="fa-solid fa-bell text-amber-400"></i>
-            <span>Track Airing</span>
+          <button class="bg-[#2b2d31] hover:bg-[#35373c] text-slate-200 text-xs font-medium px-3 py-1.5 rounded transition flex items-center space-x-1.5 border border-slate-700/50">
+            <i class="fa-solid fa-link text-slate-400"></i>
+            <span>Share</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-500"></i>
+          </button>
+          <button class="bg-[#2b2d31] hover:bg-[#35373c] text-slate-200 text-xs font-medium px-3 py-1.5 rounded transition flex items-center space-x-1.5 border border-slate-700/50">
+            <i class="fa-solid fa-play text-sky-400"></i>
+            <span>Trailer</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-500"></i>
           </button>
         </div>
+
       </div>
     </div>
   </section>
