@@ -4,10 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AniTracker - Ultimate Anime & Manga Discord Bot</title>
+  <meta property="og:title" content="AniTracker - Ultimate Anime & Manga Discord Bot">
+  <meta property="og:description" content="Track anime, set instant DM release alerts, and search 500k+ titles inside Discord.">
+  <meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4j5SAnpHfik3qGSuKCI16YHsPP0_0g3xgfBWRLIs6Xg&s">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#7c3aed">
   <link rel="icon" type="image/png" href="https://cdn.discordapp.com/avatars/1544261218124955708/avatar.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -45,7 +52,7 @@
   </div>
 
   <!-- Navigation -->
-  <nav class="fixed top-0 left-0 w-full z-50 bg-dark-bg/80 backdrop-blur-md border-b border-dark-border">
+  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-transparent">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <div class="flex items-center space-x-3">
         <!-- Bot Avatar Logo -->
@@ -477,6 +484,20 @@
       });
     }
   </script>
-
+<script>
+  window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 20) {
+      navbar.classList.add('bg-dark-bg/90', 'backdrop-blur-md', 'border-dark-border', 'shadow-lg');
+      navbar.classList.remove('border-transparent');
+    } else {
+      navbar.classList.remove('bg-dark-bg/90', 'backdrop-blur-md', 'border-dark-border', 'shadow-lg');
+      navbar.classList.add('border-transparent');
+    }
+  });
+</script>
+<script>
+  AOS.init({ duration: 800, once: true });
+</script>
 </body>
 </html>
