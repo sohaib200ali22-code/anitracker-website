@@ -4,10 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AniTracker - Ultimate Anime & Manga Discord Bot</title>
-  <link rel="icon" type="image/png" href="https://cdn.discordapp.com/avatars/1544261218124955708/avatar.png">
+
+  <!-- 1. Favicon Base64 -->
+  <link rel="icon" type="image/jpeg" href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEBUSEhAQFRUVFRUXGBUVFRUVGBYWFhUYFxUVFRUaHSggGB0lGxcWITEhJSkrLi4uFyA2ODMtNygtLisBCgoKDg0OGxAQGi0lICUtLS0vLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOEA4QMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAAAQIDBAUGB//EAEUQAAEDAQQGCAQDBgUCBwAAAAEAAhEDBCExQQUSUWFxgQYTIpGhscHwMkJS0WKS4RQjcoKywjNjc6LxB9MVFiQ0NUNT/8QAGQEAAwEBAQAAAAAAAAAAAAAAAAIDAQQF/8QAKREAAgICAgIABQQDA==========">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- AOS Library for Scroll Animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <script>
     tailwind.config = {
       theme: {
@@ -36,7 +43,7 @@
     }
   </script>
 </head>
-<body class="bg-dark-bg text-slate-200 font-sans antialiased selection:bg-brand-500 selection:text-white">
+<body class="bg-dark-bg text-slate-200 font-sans antialiased selection:bg-brand-500 selection:text-white relative">
 
   <!-- Toast Notification -->
   <div id="toast" class="fixed bottom-6 right-6 bg-brand-600 text-white px-5 py-3 rounded-xl shadow-2xl transition-all duration-300 opacity-0 pointer-events-none transform translate-y-4 z-50 flex items-center space-x-2 font-medium text-sm">
@@ -44,30 +51,42 @@
     <span id="toast-message">Command copied to clipboard!</span>
   </div>
 
+  <!-- Back To Top Button -->
+  <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 left-6 z-50 bg-brand-600 hover:bg-brand-500 text-white p-3.5 rounded-full shadow-2xl opacity-0 pointer-events-none transition-all duration-300 transform translate-y-4 border border-brand-400/30">
+    <i class="fa-solid fa-arrow-up text-lg"></i>
+  </button>
+
   <!-- Navigation -->
   <nav class="fixed top-0 left-0 w-full z-50 bg-dark-bg/80 backdrop-blur-md border-b border-dark-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <div class="flex items-center space-x-3">
         <!-- Bot Avatar Logo -->
         <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-600 via-pink-500 to-cyan-400 p-0.5 shadow-lg shadow-brand-500/40 overflow-hidden flex-shrink-0">
-          <img src="https://cdn.discordapp.com/avatars/1544261218124955708/avatar.png" alt="AniTracker Avatar" class="w-full h-full object-cover rounded-full">
+          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEBUSEhAQFRUVFRUXGBUVFRUVGBYWFhUYFxUVFRUaHSggGB0lGxcWITEhJSkrLi4uFyA2ODMtNygtLisBCgoKDg0OGxAQGi0lICUtLS0vLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOEA4QMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAAAQIDBAUGB//EAEUQAAEDAQQGCAQDBgUCBwAAAAEAAhEDBCExQQUSUWFxgQYTIpGhscHwMkJS0WKS4RQjcoKywjNjc6LxB9MVFiQ0NUNT/8QAGQEAAwEBAQAAAAAAAAAAAAAAAAIDAQQF/8QAKREAAgICAgIABQQDA==========" alt="AniTracker Avatar" class="w-full h-full object-cover rounded-full">
         </div>
-        <span class="text-xl font-bold tracking-tight text-white">Ani<span class="text-brand-500">Tracker</span></span>
+        
+        <!-- 4. Special Link on the letter 'n' -->
+        <span class="text-xl font-bold tracking-tight text-white">
+          A<a href="https://anitracker-website-admin.onrender.com/" target="_blank" class="hover:text-brand-400 transition-colors cursor-pointer">n</a>i<span class="text-brand-500">Tracker</span>
+        </span>
       </div>
 
+      <!-- Desktop Links -->
       <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
         <a href="#features" class="hover:text-white transition">Features</a>
         <a href="#preview" class="hover:text-white transition">Preview</a>
         <a href="#commands" class="hover:text-white transition">Commands</a>
+        <a href="#reviews" class="hover:text-white transition">Reviews</a>
         <a href="#faq" class="hover:text-white transition">FAQ</a>
       </div>
 
-      <div class="flex items-center space-x-3">
-        <a href="https://top.gg/bot/1544261218124955708" target="_blank" class="hidden sm:inline-flex items-center space-x-2 px-3.5 py-2 rounded-lg bg-pink-600/20 border border-pink-500/40 text-pink-300 hover:bg-pink-600 hover:text-white transition text-xs font-semibold">
+      <!-- Header Action Buttons -->
+      <div class="hidden md:flex items-center space-x-3">
+        <a href="https://top.gg/bot/1544261218124955708" target="_blank" class="inline-flex items-center space-x-2 px-3.5 py-2 rounded-lg bg-pink-600/20 border border-pink-500/40 text-pink-300 hover:bg-pink-600 hover:text-white transition text-xs font-semibold">
           <i class="fa-solid fa-check text-xs"></i>
           <span>Vote on Top.gg</span>
         </a>
-        <a href="https://discord.gg/H4Af2y4RD8" target="_blank" class="hidden sm:inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-dark-card border border-dark-border text-slate-300 hover:text-white hover:border-slate-600 transition text-xs font-medium">
+        <a href="https://discord.gg/H4Af2y4RD8" target="_blank" class="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-dark-card border border-dark-border text-slate-300 hover:text-white hover:border-slate-600 transition text-xs font-medium">
           <i class="fa-brands fa-discord text-brand-500"></i>
           <span>Support</span>
         </a>
@@ -76,11 +95,29 @@
           <span>Add to Discord</span>
         </a>
       </div>
+
+      <!-- 6. Mobile Hamburger Button -->
+      <button id="menu-btn" onclick="toggleMobileMenu()" class="md:hidden text-slate-300 hover:text-white text-2xl focus:outline-none">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden bg-dark-card border-b border-dark-border px-4 pt-2 pb-6 space-y-3 text-sm">
+      <a href="#features" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white border-b border-dark-border/40">Features</a>
+      <a href="#preview" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white border-b border-dark-border/40">Preview</a>
+      <a href="#commands" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white border-b border-dark-border/40">Commands</a>
+      <a href="#reviews" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white border-b border-dark-border/40">Reviews</a>
+      <a href="#faq" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white border-b border-dark-border/40">FAQ</a>
+      <div class="pt-2 flex flex-col gap-2">
+        <a href="https://top.gg/bot/1544261218124955708" target="_blank" class="text-center py-2.5 rounded-lg bg-pink-600/20 border border-pink-500/40 text-pink-300 font-semibold text-xs">Vote on Top.gg</a>
+        <a href="https://discord.com/oauth2/authorize?client_id=1544261218124955708&permissions=268553216&integration_type=0&scope=bot+applications.commands" target="_blank" class="text-center py-2.5 rounded-lg bg-brand-600 text-white font-semibold text-xs">Add to Discord</a>
+      </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="pt-36 pb-20 relative overflow-hidden">
+  <section class="pt-36 pb-20 relative overflow-hidden" data-aos="fade-up">
     <div class="absolute -top-40 -left-40 w-96 h-96 bg-brand-600/20 rounded-full blur-[128px] pointer-events-none"></div>
     <div class="absolute top-1/2 -right-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-[128px] pointer-events-none"></div>
 
@@ -116,7 +153,7 @@
   </section>
 
   <!-- Interactive Embed Preview Section -->
-  <section id="preview" class="py-16 bg-dark-bg relative">
+  <section id="preview" class="py-16 bg-dark-bg relative" data-aos="fade-up">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-10">
         <h2 class="text-2xl sm:text-3xl font-bold text-white">Discord Integration Preview</h2>
@@ -127,15 +164,16 @@
       <div class="bg-[#111214] rounded-xl p-4 sm:p-6 shadow-2xl border border-slate-800/80 font-sans text-left max-w-2xl mx-auto">
         
         <!-- Command Trigger Header -->
-        <div class="flex items-center space-x-2 text-xs text-slate-400 mb-2 pl-10">
+        <div class="flex items-center space-x-2 text-xs text-slate-400 mb-2 pl-2 sm:pl-10">
           <i class="fa-solid fa-reply rotate-180 text-slate-500"></i>
           <span class="font-semibold text-slate-200">sai</span> <span class="text-slate-400">used</span> <span class="bg-[#2b2d31] text-brand-400 px-1.5 py-0.5 rounded font-mono text-[11px] border border-slate-700/40">:: anime</span>
         </div>
 
         <!-- Message Header -->
         <div class="flex items-start space-x-3 mb-3">
+          <!-- 3. Bot Icon Same as Site Favicon -->
           <div class="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 border border-brand-500/40">
-            <img src="https://cdn.discordapp.com/avatars/1544261218124955708/avatar.png" alt="AniTracker Bot Avatar" class="w-full h-full object-cover">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEBUSEhAQFRUVFRUXGBUVFRUVGBYWFhUYFxUVFRUaHSggGB0lGxcWITEhJSkrLi4uFyA2ODMtNygtLisBCgoKDg0OGxAQGi0lICUtLS0vLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOEA4QMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAAAQIDBAUGB//EAEUQAAEDAQQGCAQDBgUCBwAAAAEAAhEDBCExQQUSUWFxgQYTIpGhscHwMkJS0WKS4RQjcoKywjNjc6LxB9MVFiQ0NUNT/8QAGQEAAwEBAQAAAAAAAAAAAAAAAAIDAQQF/8QAKREAAgICAgIABQQDA==========" alt="AniTracker Bot Avatar" class="w-full h-full object-cover">
           </div>
           <div>
             <div class="flex items-center space-x-2">
@@ -147,7 +185,7 @@
         </div>
 
         <!-- Discord Embed Body (Oshi No Ko) -->
-        <div class="ml-12 border-l-4 border-orange-500 bg-[#1e1f22] rounded-r-lg p-4 text-slate-200">
+        <div class="ml-0 sm:ml-12 border-l-4 border-orange-500 bg-[#1e1f22] rounded-r-lg p-4 text-slate-200">
           <div class="flex justify-between items-start gap-4">
             <div class="space-y-3 flex-1">
               <h3 class="font-bold text-sky-400 text-base tracking-wide uppercase cursor-pointer hover:underline">OSHI NO KO</h3>
@@ -175,15 +213,15 @@
               </div>
             </div>
 
-            <!-- Real Oshi No Ko Poster -->
+            <!-- 3. Updated Oshi No Ko Poster Link -->
             <div class="w-20 h-28 rounded-md overflow-hidden flex-shrink-0 shadow-md bg-dark-card border border-slate-700/50">
-              <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx150672-O9e8979neB8k.png" alt="Oshi No Ko Poster" class="w-full h-full object-cover">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuIAmm4kuHNsQsXHjR2s60HbWxYQgl_-_lOy1_kaWbzQ&s=10" alt="Oshi No Ko Poster" class="w-full h-full object-cover">
             </div>
           </div>
         </div>
 
         <!-- Action Buttons Mockup -->
-        <div class="ml-12 flex flex-wrap gap-2 mt-3">
+        <div class="ml-0 sm:ml-12 flex flex-wrap gap-2 mt-3">
           <button class="bg-[#2b2d31] hover:bg-[#35373c] text-slate-200 text-xs font-medium px-3 py-1.5 rounded transition flex items-center space-x-1.5 border border-slate-700/50">
             <i class="fa-solid fa-book text-slate-400"></i>
             <span>More Info</span>
@@ -205,7 +243,7 @@
   </section>
 
   <!-- Features Section -->
-  <section id="features" class="py-20 bg-dark-card/50 border-y border-dark-border">
+  <section id="features" class="py-20 bg-dark-card/50 border-y border-dark-border" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-16">
         <h2 class="text-3xl font-bold text-white">Packed with Everything You Need</h2>
@@ -241,7 +279,7 @@
   </section>
 
   <!-- Commands Center Section -->
-  <section id="commands" class="py-20 relative">
+  <section id="commands" class="py-20 relative" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-12">
         <h2 class="text-3xl font-bold text-white">Bot Command Directory</h2>
@@ -267,7 +305,7 @@
       <!-- Commands Table Container -->
       <div class="bg-dark-card border border-dark-border rounded-2xl overflow-hidden shadow-xl">
         <div class="overflow-x-auto">
-          <table class="w-full text-left text-sm text-slate-300">
+          <table class="w-full text-left text-sm text-slate-300 min-w-[600px]">
             <thead class="bg-dark-input/50 text-slate-400 font-semibold border-b border-dark-border uppercase text-xs">
               <tr>
                 <th class="py-4 px-6">Command</th>
@@ -362,8 +400,46 @@
     </div>
   </section>
 
+  <!-- 8. Interactive Review Section -->
+  <section id="reviews" class="py-20 bg-dark-card/40 border-t border-dark-border" data-aos="fade-up">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-white">Leave a Review</h2>
+        <p class="mt-2 text-slate-400 text-sm">Have feedback or enjoying AniTracker? Share your thoughts with us!</p>
+      </div>
+
+      <form id="review-form" onsubmit="handleReviewSubmit(event)" class="bg-dark-card border border-dark-border rounded-2xl p-6 sm:p-8 shadow-2xl space-y-6">
+        <div>
+          <label class="block text-slate-300 text-sm font-semibold mb-2">Rating</label>
+          <div class="flex items-center space-x-2 text-2xl text-slate-600 cursor-pointer" id="star-rating">
+            <i class="fa-solid fa-star hover:text-amber-400 transition" onclick="setRating(1)"></i>
+            <i class="fa-solid fa-star hover:text-amber-400 transition" onclick="setRating(2)"></i>
+            <i class="fa-solid fa-star hover:text-amber-400 transition" onclick="setRating(3)"></i>
+            <i class="fa-solid fa-star hover:text-amber-400 transition" onclick="setRating(4)"></i>
+            <i class="fa-solid fa-star hover:text-amber-400 transition" onclick="setRating(5)"></i>
+          </div>
+          <input type="hidden" id="selected-rating" value="0">
+        </div>
+
+        <div>
+          <label for="review-username" class="block text-slate-300 text-sm font-semibold mb-2">Discord Username / Name</label>
+          <input type="text" id="review-username" required placeholder="e.g. sai_dev" class="w-full bg-dark-input border border-dark-border text-white text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-brand-500 transition">
+        </div>
+
+        <div>
+          <label for="review-content" class="block text-slate-300 text-sm font-semibold mb-2">Your Review</label>
+          <textarea id="review-content" rows="4" required placeholder="Write your experience with AniTracker..." class="w-full bg-dark-input border border-dark-border text-white text-sm rounded-xl p-4 focus:outline-none focus:border-brand-500 transition"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl transition shadow-lg shadow-brand-600/30">
+          Submit Review
+        </button>
+      </form>
+    </div>
+  </section>
+
   <!-- FAQ Section -->
-  <section id="faq" class="py-20 bg-dark-card/30 border-t border-dark-border">
+  <section id="faq" class="py-20 bg-dark-card/20 border-t border-dark-border" data-aos="fade-up">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-white">Frequently Asked Questions</h2>
@@ -404,25 +480,36 @@
     </div>
   </section>
 
- <!-- Footer -->
-<footer class="py-12 bg-dark-bg border-t border-dark-border">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-400 text-sm font-medium">
-    
-    <!-- Designed with sai -->
-    <div>
-      Designed with <span class="text-brand-500 font-bold">sai</span>
-    </div>
+  <!-- Footer -->
+  <footer class="py-12 bg-dark-bg border-t border-dark-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-400 text-sm font-medium">
+      
+      <!-- 2. Designed with Clickable sai -->
+      <div>
+        Designed with <a href="https://guns.lol/_h8artless_" target="_blank" class="text-brand-500 font-bold hover:underline transition-colors">sai</a>
+      </div>
 
-    <!-- Privacy and Terms Links -->
-    <div class="flex items-center gap-6">
-      <a href="./privacy.html" class="hover:text-slate-200 transition-colors">Privacy Policy</a>
-      <a href="./terms.html" class="hover:text-slate-200 transition-colors">Terms of Service</a>
-    </div>
+      <!-- Privacy and Terms Links -->
+      <div class="flex items-center gap-6">
+        <a href="./privacy.html" class="hover:text-slate-200 transition-colors">Privacy Policy</a>
+        <a href="./terms.html" class="hover:text-slate-200 transition-colors">Terms of Service</a>
+      </div>
 
-  </div>
-</footer>
+    </div>
+  </footer>
+
+  <!-- AOS Animation Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
   <!-- Scripts -->
   <script>
+    // Initialize Scroll Animation
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+
+    // Copy Command Toast
     function copyCmd(cmd) {
       navigator.clipboard.writeText(cmd);
       const toast = document.getElementById('toast');
@@ -436,6 +523,7 @@
       }, 2500);
     }
 
+    // Toggle FAQ
     function toggleFaq(button) {
       const answer = button.nextElementSibling;
       const icon = button.querySelector('i');
@@ -443,6 +531,71 @@
       icon.classList.toggle('rotate-180');
     }
 
+    // Mobile Hamburger Menu
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Back to Top Button visibility
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('back-to-top');
+      if (window.scrollY > 300) {
+        btn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+        btn.classList.add('opacity-100', 'translate-y-0');
+      } else {
+        btn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+        btn.classList.remove('opacity-100', 'translate-y-0');
+      }
+    });
+
+    // Star Rating Handler
+    function setRating(rating) {
+      document.getElementById('selected-rating').value = rating;
+      const stars = document.querySelectorAll('#star-rating i');
+      stars.forEach((star, idx) => {
+        if (idx < rating) {
+          star.classList.remove('text-slate-600');
+          star.classList.add('text-amber-400');
+        } else {
+          star.classList.remove('text-amber-400');
+          star.classList.add('text-slate-600');
+        }
+      });
+    }
+
+    // Review Form Submit Handler (Ready for MongoDB integration)
+    function handleReviewSubmit(e) {
+      e.preventDefault();
+      const rating = document.getElementById('selected-rating').value;
+      const username = document.getElementById('review-username').value;
+      const content = document.getElementById('review-content').value;
+
+      if (rating === "0") {
+        alert("Please select a star rating first!");
+        return;
+      }
+
+      // Payload for MongoDB Backend
+      const reviewData = { username, rating: Number(rating), content, createdAt: new Date() };
+      console.log("Ready to send to MongoDB:", reviewData);
+
+      // Reset Form & show Toast feedback
+      document.getElementById('review-form').reset();
+      setRating(0);
+
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-message').innerText = `Thank you, ${username}! Review submitted.`;
+      toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+        toast.classList.remove('opacity-100', 'translate-y-0');
+      }, 3000);
+    }
+
+    // Command Filter Logic
     const filterBtns = document.querySelectorAll('.filter-btn');
     const commandRows = document.querySelectorAll('.command-item');
     const searchInput = document.getElementById('command-search');
