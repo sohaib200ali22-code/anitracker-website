@@ -5,11 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AniTracker - Ultimate Anime & Manga Discord Bot</title>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://api.iconify.design/lucide:bot.svg">
+  <!-- SEO & Primary Meta Tags -->
+  <meta name="description" content="Search titles, set instant DM release notifications, track seasonal anime schedules, and organize your favorite manga effortlessly inside Discord.">
+  <meta name="keywords" content="Anime Discord Bot, Manga Tracker, AniTracker, Silena, Discord Anime Bot, Anime Schedule">
+  <meta name="author" content="sai">
+
+  <!-- Open Graph / Facebook / Discord Social Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AniTracker - Ultimate Anime & Manga Discord Bot">
+  <meta property="og:description" content="Track and search over 500,000 anime and manga directly on Discord with instant release alerts.">
+  <meta property="og:image" content="./assests/avatar.jpg">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AniTracker - Ultimate Anime & Manga Discord Bot">
+  <meta name="twitter:description" content="Track and search over 500,000 anime and manga directly on Discord with instant release alerts.">
+  <meta name="twitter:image" content="./assests/avatar.jpg">
+
+  <!-- Favicon using Silena -->
+  <link rel="icon" type="image/jpeg" href="./assests/avatar.jpg">
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Updated Font Awesome CDN -->
+  <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
@@ -62,8 +79,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <div class="flex items-center space-x-3">
         <!-- Bot Avatar Logo -->
-        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-600 via-pink-500 to-cyan-400 p-0.5 shadow-lg shadow-brand-500/40 overflow-hidden flex-shrink-0 flex items-center justify-center bg-dark-card">
-          <i class="fa-solid fa-robot text-brand-400 text-lg"></i>
+        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-600 via-pink-500 to-cyan-400 p-0.5 shadow-lg shadow-brand-500/40 overflow-hidden flex-shrink-0">
+          <img src="./assests/avatar.jpg" alt="AniTracker Silena Mascot" class="w-full h-full object-cover rounded-full">
         </div>
         
         <!-- Secret Link on 'n' -->
@@ -75,6 +92,7 @@
       <!-- Desktop Links -->
       <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
         <a href="#features" class="hover:text-white transition">Features</a>
+        <a href="#stats" class="hover:text-white transition">Stats</a>
         <a href="#preview" class="hover:text-white transition">Preview</a>
         <a href="#commands" class="hover:text-white transition">Commands</a>
         <a href="#reviews" class="hover:text-white transition">Reviews</a>
@@ -106,6 +124,7 @@
     <!-- Mobile Navigation Drawer -->
     <div id="mobile-menu" class="hidden md:hidden bg-dark-card border-b border-dark-border px-4 pt-2 pb-6 space-y-3 text-sm">
       <a href="#features" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white border-b border-dark-border/40">Features</a>
+      <a href="#stats" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white border-b border-dark-border/40">Stats</a>
       <a href="#preview" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white border-b border-dark-border/40">Preview</a>
       <a href="#commands" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white border-b border-dark-border/40">Commands</a>
       <a href="#reviews" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white border-b border-dark-border/40">Reviews</a>
@@ -118,7 +137,7 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="pt-36 pb-20 relative overflow-hidden" data-aos="fade-up">
+  <section class="pt-36 pb-16 relative overflow-hidden" data-aos="fade-up">
     <div class="absolute -top-40 -left-40 w-96 h-96 bg-brand-600/20 rounded-full blur-[128px] pointer-events-none"></div>
     <div class="absolute top-1/2 -right-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-[128px] pointer-events-none"></div>
 
@@ -153,6 +172,30 @@
     </div>
   </section>
 
+  <!-- Live Bot Stats Bar (UI Addition) -->
+  <section id="stats" class="py-10 bg-dark-card/30 border-y border-dark-border/60" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="p-4 rounded-xl bg-dark-card border border-dark-border/80">
+          <div class="text-3xl font-extrabold text-white">500+</div>
+          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-medium">Discord Servers</div>
+        </div>
+        <div class="p-4 rounded-xl bg-dark-card border border-dark-border/80">
+          <div class="text-3xl font-extrabold text-brand-400">50,000+</div>
+          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-medium">Active Users</div>
+        </div>
+        <div class="p-4 rounded-xl bg-dark-card border border-dark-border/80">
+          <div class="text-3xl font-extrabold text-pink-400">500k+</div>
+          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-medium">Anime & Manga</div>
+        </div>
+        <div class="p-4 rounded-xl bg-dark-card border border-dark-border/80">
+          <div class="text-3xl font-extrabold text-emerald-400">99.9%</div>
+          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-medium">Uptime</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Interactive Embed Preview Section -->
   <section id="preview" class="py-16 bg-dark-bg relative" data-aos="fade-up">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
@@ -172,8 +215,8 @@
 
         <!-- Message Header -->
         <div class="flex items-start space-x-3 mb-3">
-          <div class="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 border border-brand-500/40 bg-brand-600 flex items-center justify-center text-white">
-            <i class="fa-solid fa-ghost text-sm"></i>
+          <div class="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 border border-brand-500/40">
+            <img src="./assests/avatar.jpg" alt="AniTracker Silena Bot Avatar" class="w-full h-full object-cover">
           </div>
           <div>
             <div class="flex items-center space-x-2">
@@ -214,7 +257,7 @@
             </div>
 
             <div class="w-20 h-28 rounded-md overflow-hidden flex-shrink-0 shadow-md bg-dark-card border border-slate-700/50">
-              <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx150672-2dTh4a4XThC2.png" alt="Oshi No Ko Poster" class="w-full h-full object-cover">
+              <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx150672-2dTh4a4XThC2.png" loading="lazy" alt="Oshi No Ko Poster" class="w-full h-full object-cover">
             </div>
           </div>
         </div>
@@ -318,79 +361,79 @@
                 <td class="py-4 px-6 font-mono text-brand-400 font-semibold">/anime</td>
                 <td class="py-4 px-6"><span class="bg-brand-500/10 text-brand-400 text-xs px-2.5 py-1 rounded-md border border-brand-500/20">General</span></td>
                 <td class="py-4 px-6">Search anime details, ratings, and episodes</td>
-                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/anime')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/anime', this)" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
               </tr>
               <tr class="command-item hover:bg-dark-input/30 transition" data-category="general">
                 <td class="py-4 px-6 font-mono text-brand-400 font-semibold">/manga</td>
                 <td class="py-4 px-6"><span class="bg-brand-500/10 text-brand-400 text-xs px-2.5 py-1 rounded-md border border-brand-500/20">General</span></td>
                 <td class="py-4 px-6">Search manga titles, chapters, and authors</td>
-                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/manga')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/manga', this)" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
               </tr>
               <tr class="command-item hover:bg-dark-input/30 transition" data-category="general">
                 <td class="py-4 px-6 font-mono text-brand-400 font-semibold">/character</td>
                 <td class="py-4 px-6"><span class="bg-brand-500/10 text-brand-400 text-xs px-2.5 py-1 rounded-md border border-brand-500/20">General</span></td>
                 <td class="py-4 px-6">Search anime & manga character profiles</td>
-                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/character')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/character', this)" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
               </tr>
               <tr class="command-item hover:bg-dark-input/30 transition" data-category="general">
                 <td class="py-4 px-6 font-mono text-brand-400 font-semibold">/genre</td>
                 <td class="py-4 px-6"><span class="bg-brand-500/10 text-brand-400 text-xs px-2.5 py-1 rounded-md border border-brand-500/20">General</span></td>
                 <td class="py-4 px-6">Get recommendations filtered by category/genre</td>
-                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/genre')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/genre', this)" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
               </tr>
               <tr class="command-item hover:bg-dark-input/30 transition" data-category="general">
                 <td class="py-4 px-6 font-mono text-brand-400 font-semibold">/schedule</td>
                 <td class="py-4 px-6"><span class="bg-brand-500/10 text-brand-400 text-xs px-2.5 py-1 rounded-md border border-brand-500/20">General</span></td>
                 <td class="py-4 px-6">View daily airing anime release schedule</td>
-                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/schedule')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/schedule', this)" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
               </tr>
               <tr class="command-item hover:bg-dark-input/30 transition" data-category="personal">
                 <td class="py-4 px-6 font-mono text-pink-400 font-semibold">/favorite</td>
                 <td class="py-4 px-6"><span class="bg-pink-500/10 text-pink-400 text-xs px-2.5 py-1 rounded-md border border-pink-500/20">Personal</span></td>
                 <td class="py-4 px-6">Save anime or manga for direct DM alerts</td>
-                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/favorite')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/favorite', this)" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
               </tr>
               <tr class="command-item hover:bg-dark-input/30 transition" data-category="personal">
                 <td class="py-4 px-6 font-mono text-pink-400 font-semibold">/unfavorite</td>
                 <td class="py-4 px-6"><span class="bg-pink-500/10 text-pink-400 text-xs px-2.5 py-1 rounded-md border border-pink-500/20">Personal</span></td>
                 <td class="py-4 px-6">Remove a title from your favorite list</td>
-                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/unfavorite')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/unfavorite', this)" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
               </tr>
               <tr class="command-item hover:bg-dark-input/30 transition" data-category="personal">
                 <td class="py-4 px-6 font-mono text-pink-400 font-semibold">/myfavorites</td>
                 <td class="py-4 px-6"><span class="bg-pink-500/10 text-pink-400 text-xs px-2.5 py-1 rounded-md border border-pink-500/20">Personal</span></td>
                 <td class="py-4 px-6">View and manage your saved favorites list</td>
-                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/myfavorites')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/myfavorites', this)" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
               </tr>
               <tr class="command-item hover:bg-dark-input/30 transition" data-category="personal">
                 <td class="py-4 px-6 font-mono text-pink-400 font-semibold">/report</td>
                 <td class="py-4 px-6"><span class="bg-pink-500/10 text-pink-400 text-xs px-2.5 py-1 rounded-md border border-pink-500/20">Personal</span></td>
                 <td class="py-4 px-6">Privately report an issue or bug to developers</td>
-                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/report')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/report', this)" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
               </tr>
               <tr class="command-item hover:bg-dark-input/30 transition" data-category="server">
                 <td class="py-4 px-6 font-mono text-cyan-400 font-semibold">/track</td>
                 <td class="py-4 px-6"><span class="bg-cyan-500/10 text-cyan-400 text-xs px-2.5 py-1 rounded-md border border-cyan-500/20">Server Tools</span></td>
                 <td class="py-4 px-6">Track anime or manga alerts for the server</td>
-                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/track')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/track', this)" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
               </tr>
               <tr class="command-item hover:bg-dark-input/30 transition" data-category="server">
                 <td class="py-4 px-6 font-mono text-cyan-400 font-semibold">/setup</td>
                 <td class="py-4 px-6"><span class="bg-cyan-500/10 text-cyan-400 text-xs px-2.5 py-1 rounded-md border border-cyan-500/20">Server Tools</span></td>
                 <td class="py-4 px-6">Setup the designated alert channel for announcements</td>
-                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/setup')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/setup', this)" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
               </tr>
               <tr class="command-item hover:bg-dark-input/30 transition" data-category="start">
                 <td class="py-4 px-6 font-mono text-emerald-400 font-semibold">/start</td>
                 <td class="py-4 px-6"><span class="bg-emerald-500/10 text-emerald-400 text-xs px-2.5 py-1 rounded-md border border-emerald-500/20">Start Here</span></td>
                 <td class="py-4 px-6">Interactive welcome guide and onboarding</td>
-                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/start')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/start', this)" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
               </tr>
               <tr class="command-item hover:bg-dark-input/30 transition" data-category="start">
                 <td class="py-4 px-6 font-mono text-emerald-400 font-semibold">/help</td>
                 <td class="py-4 px-6"><span class="bg-emerald-500/10 text-emerald-400 text-xs px-2.5 py-1 rounded-md border border-emerald-500/20">Start Here</span></td>
                 <td class="py-4 px-6">Display full interactive command list and support links</td>
-                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/help')" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
+                <td class="py-4 px-6 text-right"><button onclick="copyCmd('/help', this)" class="px-3 py-1.5 rounded-lg bg-dark-input border border-dark-border text-xs text-slate-300 hover:text-white hover:border-slate-500 transition"><i class="fa-regular fa-copy mr-1"></i> Copy</button></td>
               </tr>
             </tbody>
           </table>
@@ -510,14 +553,28 @@
       once: true
     });
 
-    // Copy Command Toast
-    function copyCmd(cmd) {
+    // Improved Copy Command with Visual Feedback
+    function copyCmd(cmd, btnElement) {
       navigator.clipboard.writeText(cmd);
+      
+      // Toast Notice
       const toast = document.getElementById('toast');
       document.getElementById('toast-message').innerText = `Copied "${cmd}" to clipboard!`;
       toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
       toast.classList.add('opacity-100', 'translate-y-0');
       
+      // Button UI Feedback
+      if (btnElement) {
+        const originalHTML = btnElement.innerHTML;
+        btnElement.innerHTML = `<i class="fa-solid fa-check text-emerald-400 mr-1"></i> Copied!`;
+        btnElement.classList.add('border-emerald-500/50', 'text-emerald-400');
+        
+        setTimeout(() => {
+          btnElement.innerHTML = originalHTML;
+          btnElement.classList.remove('border-emerald-500/50', 'text-emerald-400');
+        }, 1500);
+      }
+
       setTimeout(() => {
         toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
         toast.classList.remove('opacity-100', 'translate-y-0');
@@ -565,7 +622,7 @@
       });
     }
 
-    // Review Form Submit Handler (Ready for MongoDB integration)
+    // Review Form Submit Handler
     function handleReviewSubmit(e) {
       e.preventDefault();
       const rating = document.getElementById('selected-rating').value;
@@ -577,11 +634,9 @@
         return;
       }
 
-      // Payload for MongoDB Backend
       const reviewData = { username, rating: Number(rating), content, createdAt: new Date() };
-      console.log("Ready to send to MongoDB:", reviewData);
+      console.log("Ready to send to backend:", reviewData);
 
-      // Reset Form & show Toast feedback
       document.getElementById('review-form').reset();
       setRating(0);
 
